@@ -25,7 +25,7 @@ public class ScheduledRemover {
         List<Reminder> reminderList = reminderService.getAllReminders();
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern(configFileManager.getPattern());
-        String todaysDate = configFileManager.todaysDate();
+        String todaysDate = reminderService.todaysDate();
 
         reminderList.forEach(reminder -> {
             LocalDate reminderDate = LocalDate.parse(reminder.getDate(), formatter);

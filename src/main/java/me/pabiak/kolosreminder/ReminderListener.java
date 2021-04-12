@@ -87,7 +87,7 @@ public class ReminderListener extends ListenerAdapter {
                 reminderService.createReminder(new Reminder(type, subject, description, date));
                 message = "Reminder has been added to the database";
             } else {
-                message = "Wrong date format, use " + configFileManager.getPattern() + " e.g. " + configFileManager.todaysDate();
+                message = "Wrong date format, use " + configFileManager.getPattern() + " e.g. " + reminderService.todaysDate();
             }
         } else {
             message = "Wrong number of arguments";
@@ -106,7 +106,7 @@ public class ReminderListener extends ListenerAdapter {
     }
 
     private void displayReminders(List<Reminder> reminders, String avatarURL, TextChannel textChannel) {
-        String date = configFileManager.todaysDate();
+        String date = reminderService.todaysDate();
         double maxRemindersOnBoard = 8;
         double numOfReminders = reminderService.getNumOfReminders();
         double numOfBoards = Math.ceil(numOfReminders / maxRemindersOnBoard);

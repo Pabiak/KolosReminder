@@ -35,6 +35,10 @@ public class ConfigFileManager {
         this.roleChannelName = roleChannelName;
     }
 
+    public String getTimeZone() {
+        return timeZone;
+    }
+
     public String getPattern() {
         return pattern;
     }
@@ -54,10 +58,4 @@ public class ConfigFileManager {
     public String getRoleChannelName() {
         return roleChannelName;
     }
-
-    public String todaysDate() {
-        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern(pattern);
-        return dateTimeFormatter.format(LocalDate.now(ZoneId.of(timeZone)));
-    }
-
 }

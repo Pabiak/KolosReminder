@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
@@ -61,6 +62,11 @@ public class ReminderService {
             return false;
         }
         return true;
+    }
+
+    public String todaysDate() {
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern(configFileManager.getPattern());
+        return dateTimeFormatter.format(LocalDate.now(ZoneId.of(configFileManager.getTimeZone())));
     }
 
     public boolean reminderExists(Long id) {
